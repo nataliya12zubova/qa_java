@@ -1,5 +1,7 @@
 package com.example;
 
+import com.example.Predator;
+import com.example.Feline;
 import java.util.List;
 
 public class Cat {
@@ -17,5 +19,4 @@ public class Cat {
     public List<String> getFood() throws Exception {
         return predator.eatMeat();
     }
-
 }

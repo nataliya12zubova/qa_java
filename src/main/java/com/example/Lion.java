@@ -1,5 +1,6 @@
 package com.example;
 
+import com.example.Feline;
 import java.util.List;
 
 public class Lion {
@@ -12,7 +13,7 @@ public class Lion {
         } else if ("Самка".equals(sex)) {
             hasMane = false;
         } else {
-            throw new Exception("Используйте допустимые значения пола животного - самей или самка");
+            throw new Exception("Используйте допустимые значения пола животного - самец или самка");
         }
     }
 
