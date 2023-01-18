@@ -1,23 +1,22 @@
-package test;
+package test.java;
 
 import com.example.Feline;
 import com.example.Cat;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mockito;
-import org.mockito.Spy;
+import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
-import java.util.List;
-
 
 @RunWith(MockitoJUnitRunner.class)
 public class CatTest {
-    @Spy
+    @Mock
     Feline feline;
 
     @Test
-    public void catIsAPredator () throws Exception {
+    public void catSaidMeow () {
         Cat cat = new Cat(feline);
-        Mockito.when(cat.getSound()).thenReturn("Мяу");
+        cat.getSound();
+        Assert.assertTrue(cat.getSound().equals("Мяу"));
     }
 }
