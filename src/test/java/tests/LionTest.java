@@ -1,4 +1,4 @@
-package test.java;
+package tests;
 
 import com.example.Feline;
 import com.example.Lion;
@@ -10,14 +10,12 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnitRunner;
-
 import java.util.List;
 
 @RunWith(MockitoJUnitRunner.class)
 public class LionTest {
-
     @Before
-    public void init(){
+    public void open(){
         MockitoAnnotations.openMocks(this);
     }
 
@@ -25,17 +23,11 @@ public class LionTest {
     Feline felineMock;
 
     @Test
-    public void getLionPredatorFood(){
+    public void getLionPredatorFood() throws Exception {
         List<String> predatorFood = List.of("Животные", "Птицы", "Рыба");
-        try {
-            Lion lion = new Lion("Самец", felineMock);
-            Mockito.when(felineMock.getFood("Хищник")).thenReturn(List.of("Животные", "Птицы", "Рыба"));
-            List<String> result = lion.getFood();
-            Assert.assertTrue("Список еды не соответствует. По факту: " + result, result.equals(predatorFood));
-        } catch (Exception e) {
-            System.out.println(e);
-        }
+        Lion lion = new Lion("Самец", felineMock);
+        Mockito.when(felineMock.getFood("Хищник")).thenReturn(List.of("Животные", "Птицы", "Рыба"));
+        List<String> result = lion.getFood();
+        Assert.assertEquals("Список еды не соответствует. По факту: " + result, result, predatorFood);
     }
-
 }
-

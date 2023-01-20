@@ -1,4 +1,4 @@
-package test.java;
+package tests;
 
 import com.example.Feline;
 import com.example.Lion;
@@ -11,11 +11,11 @@ import org.mockito.Mock;
 @RunWith(Parameterized.class)
 public class LionParametrizedTest {
     private final String sex;
-    private final boolean hasMane;
+    private final boolean haveMane;
 
-    public LionParametrizedTest(String sex, boolean hasMane) {
+    public LionParametrizedTest(String sex, boolean haveMane) {
         this.sex = sex;
-        this.hasMane = hasMane;
+        this.haveMane = haveMane;
     }
 
     @Parameterized.Parameters
@@ -23,7 +23,6 @@ public class LionParametrizedTest {
         return new Object[][]{
                 {"Самец", true},
                 {"Самка", false},
-                {"Тема Лебедев", false},
         };
     }
 
@@ -31,13 +30,10 @@ public class LionParametrizedTest {
     Feline felineMock;
 
     @Test
-    public void checkLionHasMane() {
-        try {
-            Lion lion = new Lion(sex, felineMock);
-            boolean result = lion.doesHaveMane();
-            Assert.assertTrue(result == hasMane);
-        } catch (Exception e) {
-            System.out.println(e);
-        }
+    public void checkLionHasMane() throws Exception {
+        Lion lion = new Lion(sex, felineMock);
+        boolean result = lion.doesHaveMane();
+        Assert.assertEquals(result, haveMane);
     }
 }
+
